@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/challenges/staircase
+//https://www.hackerrank.com/challenges/plus-minus
 
 process.stdin.resume();
 process.stdin.setEncoding('ascii');
@@ -22,14 +22,18 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
+
 //solution
 
 function main() {
   var n = parseInt(readLine());
-  let x = 1;
+  arr = readLine().split(' ');
+  arr = arr.map(Number);
+  len = arr.length
 
-  while (x <= n) {
-    console.log(Array((n+1)-x).join(" ").concat(Array(x+1).join('#')))
-    x ++
-  }
+  var pos = (arr.filter(i => i > 0).length / len).toFixed(6)
+  var neg = (arr.filter(i => i < 0).length / len).toFixed(6)
+  var zero = ((len - pos*len - neg*len) / len).toFixed(6)
+
+  console.log([pos,neg,zero].join('\n'))
 }

@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/challenges/staircase
+// https://www.hackerrank.com/challenges/mini-max-sum
 
 process.stdin.resume();
 process.stdin.setEncoding('ascii');
@@ -25,11 +25,11 @@ function readLine() {
 //solution
 
 function main() {
-  var n = parseInt(readLine());
-  let x = 1;
+  arr = readLine().split(' ');
+  arr = arr.map(Number);
 
-  while (x <= n) {
-    console.log(Array((n+1)-x).join(" ").concat(Array(x+1).join('#')))
-    x ++
-  }
+  const sorted = arr.sort()
+  let min = sorted.slice(0, -1).reduce((x, y) => x + y)
+  let max = sorted.slice(1).reduce((x, y) => x + y)
+  console.log( [min, max].join(' ') )
 }
