@@ -22,6 +22,8 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
+//solution
+
 function kangaroo(x1, v1, x2, v2) {
   if (v2 > v1 || v2 == v1) {
     return "NO"
