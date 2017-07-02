@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/challenges/divisible-sum-pairs
+// https://www.hackerrank.com/challenges/bon-appetit
 
 process.stdin.resume();
 process.stdin.setEncoding('ascii');
@@ -22,15 +22,16 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
-function divisibleSumPairs(n, k, ar) {
-  var outp = 0
+//solution
 
-  for(let i=0;i<n;i++){
-    for(let j=i+1;j<n;j++){
-       (ar[i] + ar[j]) % k == 0 ? outp++ : 0
-    }
+function bonAppetit(n, k, b, ar) {
+  var annaCost = ((ar.reduce((a,b) => a + b)) - ar[k]) / 2
+
+  if (annaCost == b) {
+    return "Bon Appetit"
+  } else {
+    return b - annaCost
   }
-  return outp
 }
 
 function main() {
@@ -39,7 +40,7 @@ function main() {
   var k = parseInt(n_temp[1]);
   ar = readLine().split(' ');
   ar = ar.map(Number);
-  var result = divisibleSumPairs(n, k, ar);
+  var b = parseInt(readLine());
+  var result = bonAppetit(n, k, b, ar);
   process.stdout.write("" + result + "\n");
-
 }

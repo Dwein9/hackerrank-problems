@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/challenges/divisible-sum-pairs
+// https://www.hackerrank.com/challenges/migratory-birds
 
 process.stdin.resume();
 process.stdin.setEncoding('ascii');
@@ -22,24 +22,32 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
-function divisibleSumPairs(n, k, ar) {
-  var outp = 0
+// solution
 
-  for(let i=0;i<n;i++){
-    for(let j=i+1;j<n;j++){
-       (ar[i] + ar[j]) % k == 0 ? outp++ : 0
+function migratoryBirds(n, ar) {
+  var birds = ar.reduce((obj, i) => {
+    i in obj ? obj[i]++ : obj[i] = 1
+	  return obj
+  }, {} )
+
+  var max = 0, bird = 16, outp = 0
+  for(i in birds){
+    if (birds[i] > max) {
+      max = birds[i]
+      outp = i
+    } else if (birds[i] == max && i < bird) {
+      max = birds[i]
+      outp = i
+      bird = i
     }
   }
   return outp
 }
 
 function main() {
-  var n_temp = readLine().split(' ');
-  var n = parseInt(n_temp[0]);
-  var k = parseInt(n_temp[1]);
+  var n = parseInt(readLine());
   ar = readLine().split(' ');
   ar = ar.map(Number);
-  var result = divisibleSumPairs(n, k, ar);
+  var result = migratoryBirds(n, ar);
   process.stdout.write("" + result + "\n");
-
 }
