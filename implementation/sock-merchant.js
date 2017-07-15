@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/challenges/divisible-sum-pairs
+// https://www.hackerrank.com/challenges/sock-merchant
 
 process.stdin.resume();
 process.stdin.setEncoding('ascii');
@@ -24,24 +24,28 @@ function readLine() {
 
 // solution
 
-function divisibleSumPairs(n, k, ar) {
+function sockMerchant(n, ar) {
+  var pairs = ar.reduce((obj, i) => {
+    if (i in obj) {
+      obj[i]++;
+    } else {
+      obj[i] = 1;
+    }
+  return obj;
+  },{})
+
   var outp = 0
 
-  for(let i=0;i<n;i++){
-    for(let j=i+1;j<n;j++){
-       (ar[i] + ar[j]) % k == 0 ? outp++ : 0
-    }
+  for(i in pairs){
+    outp += parseInt(pairs[i] / 2)
   }
   return outp
 }
 
 function main() {
-  var n_temp = readLine().split(' ');
-  var n = parseInt(n_temp[0]);
-  var k = parseInt(n_temp[1]);
+  var n = parseInt(readLine());
   ar = readLine().split(' ');
   ar = ar.map(Number);
-  var result = divisibleSumPairs(n, k, ar);
+  var result = sockMerchant(n, ar);
   process.stdout.write("" + result + "\n");
-
 }

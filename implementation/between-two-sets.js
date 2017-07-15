@@ -21,6 +21,9 @@ function readLine() {
 }
 
 /////////////// ignore above this line ////////////////////
+
+//solution
+
 function getTotalX(a, b){
   var outp = 0
   for(let i = a[0]; i<=b[0]; i++){

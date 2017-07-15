@@ -22,6 +22,8 @@ function readLine() {
 
 /////////////// ignore above this line ////////////////////
 
+// solution
+
 function solve(year){
   if (year == 1918) {
     return `26.09.${year}`
